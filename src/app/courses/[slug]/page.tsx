@@ -1,8 +1,6 @@
-"use client";
-import React from "react";
+import { Button } from "@/components/ui/moving-border";
 import musicData from "@/data/music_courses.json";
 import Image from "next/image";
-import { Button } from "@/components/ui/moving-border";
 
 function page({ params }: { params: { slug: string } }) {
   const course = musicData.courses.find(
@@ -37,3 +35,11 @@ function page({ params }: { params: { slug: string } }) {
 }
 
 export default page;
+
+export async function generateStaticParams() {
+  const slugs = musicData.courses.map((course) => course.slug);
+
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
