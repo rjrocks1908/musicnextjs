@@ -35,11 +35,3 @@ function page({ params }: { params: { slug: string } }) {
 }
 
 export default page;
-
-export async function generateStaticParams() {
-  const slugs = musicData.courses.map((course) => course.slug);
-
-  return slugs.map((slug) => ({
-    slug,
-  }));
-}
